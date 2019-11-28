@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: activemq-deployment
+  name: activemq-service-deployment
   labels:
-    app: activemq
+    app: activemq-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: activemq
+      app: activemq-service
   template:
     metadata:
       labels:
-        app: activemq
+        app: activemq-service
     spec:
       containers:
-      - name: activemq
-        image: systeamorg/activemq
+      - name: activemq-service
+        image: systeamorg/activemq-service
         imagePullPolicy: Never
         ports:
         - containerPort: 61613
@@ -26,9 +26,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: activemq
+  name: activemq-service
   labels:
-    app: activemq
+    app: activemq-service
 spec:
   ports:
   - port: 61616
@@ -48,4 +48,4 @@ spec:
     nodePort: 30013
   type: NodePort
   selector:
-    app: activemq
+    app: activemq-service
