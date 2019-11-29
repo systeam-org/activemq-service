@@ -17,7 +17,6 @@ spec:
       containers:
       - name: activemq-service
         image: systeamorg/activemq-service
-        imagePullPolicy: Never
         ports:
         - containerPort: 61613
         - containerPort: 61616
